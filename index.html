@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Agus Miftachul Huda</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Menggunakan font Inter sebagai default */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-300">
+
+    <!-- Container Utama -->
+    <div class="max-w-4xl mx-auto p-5 sm:p-8">
+
+        <!-- Header & Navigasi -->
+        <header class="flex justify-between items-center py-4">
+            <div>
+                <h1 class="text-2xl md:text-3xl font-bold text-white">Agus Miftachul Huda</h1>
+            </div>
+            <nav class="flex items-center space-x-4">
+                <a href="https://github.com/Miftchul" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors duration-300">
+                    <i data-lucide="github" class="w-6 h-6"></i>
+                </a>
+                <a href="https://linkedin.com/in/agus-miftachul-huda" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors duration-300">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                </a>
+                <a href="https://x.com/Miftachul" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors duration-300">
+                    <i data-lucide="twitter" class="w-6 h-6"></i>
+                </a>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Hero Section -->
+            <section id="hero" class="mt-16 flex flex-col md:flex-row items-center gap-10">
+                <div class="w-full md:w-2/3">
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+                        Halo, saya <span class="text-cyan-400">Agus Miftachul Huda</span>
+                    </h2>
+                    <p class="mt-4 text-lg text-slate-400">
+                        Saya mahasiswa semester 6 yang ingin memanfaatkan waktu luang secara produktif dengan mencari 
+                        pengalaman kerja. Saya pekerja keras, pembelajar cepat, siap beradaptasi dengan lingkungan dan tugas 
+                        baru, serta berkomitmen menyelesaikan setiap tanggung jawab dengan baik.
+                    </p>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <a href="#kontak" id="contact-button" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2">
+                             <i data-lucide="send" class="w-5 h-5"></i>
+                             Hubungi Saya
+                        </a>
+                        <!-- Tombol Unduh CV -->
+                        <a href="CV-Agus-Miftachul-Huda.pdf" download="CV_Agus_Miftachul_Huda.pdf" class="bg-slate-800 hover:bg-slate-700 text-cyan-300 font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2">
+                            <i data-lucide="download" class="w-5 h-5"></i>
+                            Unduh CV
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 flex justify-center md:justify-end mt-8 md:mt-0">
+                    <img src="my-profile.jpg" alt="Foto profil Anda" class="rounded-full object-cover w-48 h-48 md:w-64 md:h-64 border-4 border-slate-700 shadow-lg">
+                </div>
+            </section>
+
+            <!-- Tentang Saya Section -->
+            <section id="tentang" class="mt-24">
+                <h3 class="text-3xl font-bold text-white inline-block pb-2 border-b-4 border-cyan-400">Tentang Saya</h3>
+                <p class="mt-6 text-slate-400 leading-relaxed">
+                    Saya adalah mahasiswa semester 6 yang memiliki minat besar di bidang teknologi dan pemrograman. 
+                    Dengan latar belakang pendidikan di bidang informatika, saya telah mengerjakan berbagai proyek baik 
+                    secara individu maupun tim. Saya senang mempelajari hal baru, beradaptasi dengan cepat, dan selalu 
+                    berusaha memberikan hasil terbaik dalam setiap pekerjaan. Motivasi saya adalah untuk terus berkembang 
+                    dan berkontribusi positif melalui teknologi.
+                </p>
+                
+                <h4 class="text-2xl font-bold text-white mt-10">Keahlian Saya</h4>
+                <div class="mt-4 flex flex-wrap gap-3">
+                    <span class="bg-slate-800 text-cyan-300 text-sm font-medium px-4 py-2 rounded-full">Python</span>
+                    <span class="bg-slate-800 text-cyan-300 text-sm font-medium px-4 py-2 rounded-full">HTML & CSS</span>
+                    <span class="bg-slate-800 text-cyan-300 text-sm font-medium px-4 py-2 rounded-full">PHP</span>
+                    <span class="bg-slate-800 text-cyan-300 text-sm font-medium px-4 py-2 rounded-full">Kotlin</span>
+                </div>
+            </section>
+
+            <!-- Proyek Section -->
+            <section id="proyek" class="mt-24">
+                <h3 class="text-3xl font-bold text-white inline-block pb-2 border-b-4 border-cyan-400">Proyek Saya</h3>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Contoh Proyek 1 -->
+                    <div class="bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300">
+                        <video src="project-1.mp4" controls poster="project-1.png" class="w-full h-48 object-cover bg-black"></video>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-white">Aplikasi Wisata & Pencatatan</h4>
+                            <p class="mt-2 text-slate-400">Aplikasi pencatatan wisata berbasis mobile menggunakan Flutter.</p>
+                            <div class="mt-4 flex space-x-4">
+                                <!-- <a href="project-1.mp4" target="_blank" class="text-cyan-400 hover:underline">Live Demo</a> -->
+                                <a href="https://github.com/Miftchul/eav1" target="_blank" class="text-cyan-400 hover:underline">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contoh Proyek 2 -->
+                    <div class="bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300">
+                        <video src="project-2.mp4" controls poster="project-2.png" class="w-full h-48 object-cover bg-black"></video>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-white">Model Rekomendasi Tanaman</h4>
+                            <p class="mt-2 text-slate-400">Model untuk merekomendasikan tanaman berdasarkan kondisi cuaca dan kebutuhan.</p>
+                            <div class="mt-4 flex space-x-4">
+                                <!-- <a href="project-1.mp4" target="_blank" class="text-cyan-400 hover:underline">Live Demo</a> -->
+                                <a href="https://github.com/Miftchul/crop_recommendation" target="_blank" class="text-cyan-400 hover:underline">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tambahkan proyek lainnya di sini -->
+
+                </div>
+            </section>
+
+            <!-- Kontak Section -->
+            <section id="kontak" class="mt-24 text-center">
+                 <h3 class="text-3xl font-bold text-white inline-block pb-2 border-b-4 border-cyan-400">Hubungi Saya</h3>
+                 <p class="mt-6 text-slate-400 max-w-2xl mx-auto">
+                    Saya selalu terbuka untuk diskusi, kolaborasi, atau sekadar menyapa. Jangan ragu untuk menghubungi saya melalui email.
+                 </p>
+                 <div class="mt-6">
+                    <a href="mailto:agusmiftachulhuda44@gmail.com" class="text-xl font-semibold text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
+                        agusmiftachulhuda44@gmail.com
+                    </a>
+                 </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center mt-24 py-6 border-t border-slate-800">
+            <p class="text-slate-500">
+                Dibuat dengan <span class="text-red-500">&hearts;</span> oleh Agus | &copy; 2025
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Inisialisasi Lucide Icons
+        lucide.createIcons();
+
+        // Smooth scroll untuk tombol "Hubungi Saya"
+        const contactButton = document.getElementById('contact-button');
+        const contactSection = document.getElementById('kontak');
+
+        contactButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            contactSection.scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
