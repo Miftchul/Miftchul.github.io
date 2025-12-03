@@ -1,176 +1,343 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Agus Miftachul Huda</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="fav.png">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
+    <title>Happy 22nd Birthday!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    
     <style>
-        /* Menggunakan font Inter sebagai default */
+        /* CSS RESET & CORE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 1s ease, visibility 1s ease;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('bg-hbd.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 110%;
+            animation: backgroundMove 20s ease-in-out infinite alternate;
+        }
+
+        .btn-start {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background: #e94560;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(233, 69, 96, 0.5);
+            transition: transform 0.2s;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-start:hover {
+            transform: scale(1.1);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            max-width: 400px;
+            width: 90%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        #topSection {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            border: 5px solid #e94560;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(233, 69, 96, 0.6);
+            position: relative;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #e94560;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(233, 69, 96, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(233, 69, 96, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(233, 69, 96, 0); }
+        }
+
+        .show-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #magicGallery {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            margin-bottom: 40px;
+        }
+
+        .gallery-media {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(70px);
+            transition: all 1s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes backgroundMove {
+            0% { background-size: 110%; background-position: center center; }
+            100% { background-size: 130%; background-position: center top; }
         }
     </style>
 </head>
-    
-<body class="bg-slate-900 text-slate-300">
+<body>
 
-    <!-- Container Utama -->
-    <div class="max-w-4xl mx-auto p-5 sm:p-8">
+    <div id="overlay">
+        <button class="btn-start" id="startBtn" onclick="startIntro()">Mulai</button>
 
-        <!-- Header & Navigasi -->
-        <header class="flex justify-between items-center py-4">
-            <div>
-                <h1 class="text-2xl md:text-3xl font-bold text-white">Agus Miftachul Huda</h1>
-            </div>
-            <nav class="flex items-center space-x-4">
-                <a href="https://github.com/Miftchul" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors duration-300">
-                    <i data-lucide="github" class="w-6 h-6"></i>
-                </a>
-                <a href="https://linkedin.com/in/agus-miftachul-huda" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors duration-300">
-                    <i data-lucide="linkedin" class="w-6 h-6"></i>
-                </a>
-                <a href="https://x.com/Miftachul" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors duration-300">
-                    <i data-lucide="twitter" class="w-6 h-6"></i>
-                </a>
-            </nav>
-        </header>
+        <h1 id="countdown" style="
+            font-size: 4rem;
+            font-weight: 600;
+            margin-top: 20px;
+            display:none;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        ">10</h1>
 
-        <main>
-            <!-- Hero Section -->
-            <section id="hero" class="mt-16 flex flex-col md:flex-row items-center gap-10">
-                <div class="w-full md:w-2/3">
-                    <h2 class="text-4xl lg:text-5xl font-extrabold text-white leading-tight">
-                        Halo, saya <span class="text-cyan-400">Agus Miftachul Huda</span>
-                    </h2>
-                    <p class="mt-4 text-lg text-slate-400">
-                        Saya mahasiswa semester 6 yang ingin memanfaatkan waktu luang secara produktif dengan mencari 
-                        pengalaman kerja. Saya pekerja keras, pembelajar cepat, siap beradaptasi dengan lingkungan dan tugas 
-                        baru, serta berkomitmen menyelesaikan setiap tanggung jawab dengan baik.
-                    </p>
-                    <div class="mt-8 flex flex-wrap gap-4">
-                        <a href="#kontak" id="contact-button" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2">
-                             <i data-lucide="send" class="w-5 h-5"></i>
-                             Hubungi Saya
-                        </a>
-                        <!-- Tombol Unduh CV -->
-                        <a href="CV-Agus-Miftachul-Huda.pdf" download="CV_Agus_Miftachul_Huda.pdf" class="bg-slate-800 hover:bg-slate-700 text-cyan-300 font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2">
-                            <i data-lucide="download" class="w-5 h-5"></i>
-                            Unduh CV
-                        </a>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/3 flex justify-center md:justify-end mt-8 md:mt-0">
-                    <img src="my-profile.jpg" alt="Foto profil Anda" class="rounded-full object-cover w-48 h-48 md:w-64 md:h-64 border-4 border-slate-700 shadow-lg">
-                </div>
-            </section>
+        <div id="afterCountdown" style="display:none; text-align:center;">
+            <h3 style="margin-bottom: 20px; font-weight: 300; font-size: 1.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
+                Ada kejutan buat Kamu...
+            </h3>
 
-            <!-- Tentang Saya Section -->
-            <section id="tentang" class="mt-24">
-                <h3 class="text-3xl font-bold text-white inline-block pb-2 border-b-4 border-cyan-400">Tentang Saya</h3>
-                <p class="mt-6 text-slate-400 leading-relaxed">
-                    Saya adalah mahasiswa semester 6 yang memiliki minat besar di bidang teknologi dan pemrograman. 
-                    Dengan latar belakang pendidikan di bidang informatika, saya telah mengerjakan berbagai proyek baik 
-                    secara individu maupun tim. Saya senang mempelajari hal baru, beradaptasi dengan cepat, dan selalu 
-                    berusaha memberikan hasil terbaik dalam setiap pekerjaan. Motivasi saya adalah untuk terus berkembang 
-                    dan berkontribusi positif melalui teknologi.
-                </p>
-                
-                <h4 class="text-2xl font-bold text-white mt-10">Keahlian Saya</h4>
-                <div class="mt-4 flex flex-wrap gap-3">
-                    <span class="bg-slate-800 text-cyan-300 text-sm font-medium px-4 py-2 rounded-full">Python</span>
-                    <span class="bg-slate-800 text-cyan-300 text-sm font-medium px-4 py-2 rounded-full">HTML & CSS</span>
-                    <span class="bg-slate-800 text-cyan-300 text-sm font-medium px-4 py-2 rounded-full">PHP</span>
-                    <span class="bg-slate-800 text-cyan-300 text-sm font-medium px-4 py-2 rounded-full">Kotlin</span>
-                </div>
-            </section>
-
-            <!-- Proyek Section -->
-            <section id="proyek" class="mt-24">
-                <h3 class="text-3xl font-bold text-white inline-block pb-2 border-b-4 border-cyan-400">Proyek Saya</h3>
-                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Contoh Proyek 1 -->
-                    <div class="bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300">
-                        <video src="project-1.mp4" controls poster="project-1.png" class="w-full h-48 object-cover bg-black"></video>
-                        <div class="p-6">
-                            <h4 class="text-xl font-bold text-white">Aplikasi Wisata & Pencatatan</h4>
-                            <p class="mt-2 text-slate-400">Aplikasi pencatatan wisata berbasis mobile menggunakan Flutter.</p>
-                            <div class="mt-4 flex space-x-4">
-                                <!-- <a href="project-1.mp4" target="_blank" class="text-cyan-400 hover:underline">Live Demo</a> -->
-                                <a href="https://github.com/Miftchul/eav1" target="_blank" class="text-cyan-400 hover:underline">Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Contoh Proyek 2 -->
-                    <div class="bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300">
-                        <video src="project-2.mp4" controls poster="project-2.png" class="w-full h-48 object-cover bg-black"></video>
-                        <div class="p-6">
-                            <h4 class="text-xl font-bold text-white">Model Rekomendasi Tanaman</h4>
-                            <p class="mt-2 text-slate-400">Model untuk merekomendasikan tanaman berdasarkan kondisi cuaca dan kebutuhan.</p>
-                            <div class="mt-4 flex space-x-4">
-                                <!-- <a href="project-1.mp4" target="_blank" class="text-cyan-400 hover:underline">Live Demo</a> -->
-                                <a href="https://github.com/Miftchul/crop_recommendation" target="_blank" class="text-cyan-400 hover:underline">Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Tambahkan proyek lainnya di sini -->
-
-                </div>
-            </section>
-
-            <!-- Kontak Section -->
-            <section id="kontak" class="mt-24 text-center">
-                 <h3 class="text-3xl font-bold text-white inline-block pb-2 border-b-4 border-cyan-400">Hubungi Saya</h3>
-                 <p class="mt-6 text-slate-400 max-w-2xl mx-auto">
-                    Saya selalu terbuka untuk diskusi, kolaborasi, atau sekadar menyapa. Jangan ragu untuk menghubungi saya melalui email.
-                 </p>
-                 <div class="mt-6">
-                    <a href="mailto:agusmiftachulhuda44@gmail.com" class="text-xl font-semibold text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
-                        agusmiftachulhuda44@gmail.com
-                    </a>
-                 </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="text-center mt-24 py-6 border-t border-slate-800">
-            <p class="text-slate-500">
-                Dibuat dengan <span class="text-red-500">&hearts;</span> oleh Agus | &copy; 2025
-            </p>
-        </footer>
-
+            <button class="btn-start" onclick="startCelebration()">Buka Sekarang 🎁</button>
+        </div>
     </div>
 
+    <div id="topSection">
+        <div class="card" id="mainCard">
+            <div class="photo-container">
+                <img src="dhieva.jpeg" alt="Birthday Person">
+            </div>
+            
+            <h1>Happy Birthday!</h1>
+            <h2>Turning 22 🎉</h2>
+            
+            <p>
+                Selamat ulang tahun yang ke-22! <br>
+                Semoga di usia ini makin dewasa, bahagia selalu, 
+                tercapai semua cita-citanya, dan menjadi versi terbaik dari dirimu.
+                <br><br>
+                <i>Keep shining! ✨</i>
+            </p>
+
+            <small style="color: #aaa;">Scroll for magic ✨</small>
+        </div>
+    </div>
+
+    <div id="magicGallery" style="padding: 80px 20px; opacity:0;">
+        <h2 style="text-align:center; margin-bottom:40px;">Magic Moments ✨</h2>
+
+        <div class="gallery-item reveal">
+            <img src="20.jpeg" class="gallery-media" />
+        </div>
+
+        <div class="gallery-item reveal">
+            <img src="20-2.jpeg" class="gallery-media" />
+        </div>
+
+        <div class="gallery-item reveal">
+            <video class="gallery-media" controls>
+                <source src="21.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="gallery-item reveal">
+            <img src="20.jpg" class="gallery-media" />
+        </div>
+    </div>
+
+    <!-- PERBAIKAN: preload audio -->
+    <audio id="bgMusic" preload="auto" loop>
+        <source src="hbd.mp3" type="audio/mpeg">
+        Browser kamu tidak mendukung audio.
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
     <script>
-        // Inisialisasi Lucide Icons
-        lucide.createIcons();
+        let countdownValue = 10;
+        const audio = document.getElementById('bgMusic');
 
-        // Smooth scroll untuk tombol "Hubungi Saya"
-        const contactButton = document.getElementById('contact-button');
-        const contactSection = document.getElementById('kontak');
+        // PRELOAD (agar tidak telat saat play)
+        audio.preload = "auto";
+        audio.load();
 
-        contactButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            contactSection.scrollIntoView({
-                behavior: 'smooth'
+        function startIntro() {
+            document.getElementById("startBtn").style.display = "none";
+            document.getElementById("countdown").style.display = "block";
+
+            audio.volume = 0.8;
+            audio.play().catch(e => console.log("Error:", e));
+
+            startCountdown();
+        }
+
+        function startCountdown() {
+            const countdownEl = document.getElementById("countdown");
+            const afterCd = document.getElementById("afterCountdown");
+
+            const timer = setInterval(() => {
+                countdownValue--;
+                countdownEl.textContent = countdownValue;
+
+                if (countdownValue <= 0) {
+                    clearInterval(timer);
+                    countdownEl.style.display = "none";
+                    afterCd.style.display = "block";
+                }
+            }, 1000);
+        }
+
+        function startCelebration() {
+            const overlay = document.getElementById('overlay');
+            const card = document.getElementById('mainCard');
+
+            overlay.style.opacity = '0';
+
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                card.classList.add('show-content');
+                fireConfetti();
+            }, 800);
+        }
+
+        function fireConfetti() {
+            var duration = 15 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) return clearInterval(interval);
+
+                var particleCount = 50 * (timeLeft / duration);
+
+                confetti(Object.assign({}, defaults, { 
+                    particleCount, 
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } 
+                }));
+
+                confetti(Object.assign({}, defaults, { 
+                    particleCount, 
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } 
+                }));
+            }, 250);
+        }
+
+        let firstScrollTriggered = false;
+
+        window.addEventListener("scroll", () => {
+            const gallery = document.getElementById("magicGallery");
+
+            if (!firstScrollTriggered && window.scrollY > 50) {
+                firstScrollTriggered = true;
+
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: gallery.offsetTop - 40,
+                        behavior: "smooth"
+                    });
+                }, 200);
+
+                setTimeout(() => {
+                    gallery.style.opacity = 1;
+                }, 300);
+            }
+
+            const reveals = document.querySelectorAll(".reveal");
+
+            reveals.forEach((item) => {
+                const rect = item.getBoundingClientRect();
+
+                if (rect.top < window.innerHeight - 100) {
+                    item.classList.add("show");
+                }
             });
         });
+
     </script>
 </body>
 </html>
