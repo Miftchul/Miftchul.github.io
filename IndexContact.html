@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Agus Miftachul Huda</title>
+  <meta name="description" content="Get in touch with Agus Miftachul Huda — Full-Stack & Mobile Developer from Indonesia." />
+  <link rel="shortcut icon" href="fav.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface2: #18181f;
+      --accent: #c8a96e;
+      --accent2: #e8c98e;
+      --text: #e8e6e0;
+      --muted: #888880;
+      --border: rgba(200,169,110,0.15);
+      --border-hover: rgba(200,169,110,0.38);
+      --error: #e05c5c;
+      --success: #5cb87a;
+    }
+
+    [data-theme="light"] {
+      --bg: #f5f2ec;
+      --surface: #ffffff;
+      --surface2: #ede8de;
+      --accent: #9b7840;
+      --accent2: #b89050;
+      --text: #1c1a16;
+      --muted: #6b6660;
+      --border: rgba(155,120,64,0.2);
+      --border-hover: rgba(155,120,64,0.45);
+    }
+
+    .nav-controls { display: flex; align-items: center; gap: 0.6rem; }
+    .theme-toggle {
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover { border-color: var(--accent); background: var(--surface2); }
+    .lang-switcher { display: flex; gap: 2px; }
+    .lang-btn {
+      padding: 0.2rem 0.55rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.25s;
+      border-radius: 3px;
+    }
+    .lang-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .lang-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 4rem;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--accent); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .btn-outline { background: transparent; color: var(--accent); }
+    .btn-outline:hover { background: rgba(200,169,110,0.08); transform: translateY(-2px); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 10rem 4rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(200,169,110,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.1s forwards;
+    }
+
+    .page-tag::before { content: ''; width: 2rem; height: 1px; background: var(--accent); }
+
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.25s forwards;
+    }
+
+    .page-subtitle {
+      margin-top: 1.2rem;
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 560px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.4s forwards;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .contact-layout {
+      padding: 4rem 4rem 7rem;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* ── LEFT COLUMN ── */
+    .contact-info { display: flex; flex-direction: column; gap: 2.5rem; }
+
+    .info-block {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .info-block.visible { opacity: 1; transform: none; }
+
+    .info-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .info-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    .info-block p {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+
+    .info-block p strong { color: var(--text); font-weight: 500; }
+
+    /* Channel cards */
+    .channel-cards { display: flex; flex-direction: column; gap: 0.8rem; }
+
+    .channel-card {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.1rem 1.4rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .channel-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.3s;
+    }
+
+    .channel-card:hover {
+      border-color: var(--border-hover);
+      background: var(--surface2);
+      transform: translateX(4px);
+    }
+
+    .channel-card:hover::before { transform: scaleY(1); }
+
+    .channel-icon {
+      width: 38px; height: 38px;
+      background: rgba(200,169,110,0.08);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .channel-info { flex: 1; }
+
+    .channel-type {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .channel-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: color 0.3s;
+    }
+
+    .channel-card:hover .channel-value { color: var(--accent); }
+
+    .channel-arrow {
+      color: var(--muted);
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .channel-card:hover .channel-arrow {
+      transform: translateX(4px);
+      color: var(--accent);
+    }
+
+    /* Status badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 1.1rem;
+      background: rgba(92,184,122,0.08);
+      border: 1px solid rgba(92,184,122,0.25);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--success);
+    }
+
+    .status-dot {
+      width: 7px; height: 7px;
+      background: var(--success);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* ── RIGHT COLUMN — FORM ── */
+    .contact-form-wrap {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s 0.2s ease, transform 0.9s 0.2s ease;
+    }
+
+    .contact-form-wrap.visible { opacity: 1; transform: none; }
+
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2.8rem;
+      position: relative;
+    }
+
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-subtitle {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 2.2rem;
+      line-height: 1.6;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.4rem;
+    }
+
+    label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    label span { color: var(--accent); margin-left: 2px; }
+
+    input, textarea, select {
+      background: var(--bg);
+      border: 1px solid rgba(200,169,110,0.2);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      width: 100%;
+      appearance: none;
+    }
+
+    input::placeholder, textarea::placeholder { color: rgba(136,136,128,0.5); }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(200,169,110,0.08);
+    }
+
+    textarea { resize: vertical; min-height: 130px; }
+
+    select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888880' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+
+    select option { background: var(--surface2); }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem 2rem;
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      color: var(--bg);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      background: var(--accent2);
+      border-color: var(--accent2);
+      box-shadow: 0 8px 30px rgba(200,169,110,0.25);
+      transform: translateY(-2px);
+    }
+
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn.loading { opacity: 0.7; pointer-events: none; }
+
+    /* Success message */
+    .success-msg {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 2rem;
+      gap: 1.2rem;
+    }
+
+    .success-msg.show { display: flex; }
+
+    .success-icon {
+      width: 56px; height: 56px;
+      border: 2px solid var(--success);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--success);
+    }
+
+    .success-msg h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .success-msg p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+    .reset-btn {
+      margin-top: 0.5rem;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .reset-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── FAQ ── */
+    .faq-section {
+      padding: 5rem 4rem;
+      background: var(--surface);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+    }
+
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+
+    .faq-list { display: flex; flex-direction: column; gap: 0; max-width: 860px; }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.4rem 0;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: left;
+      transition: color 0.3s;
+    }
+
+    .faq-q:hover { color: var(--accent); }
+
+    .faq-icon {
+      width: 20px; height: 20px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--accent); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .faq-a-inner {
+      padding: 0 0 1.4rem;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 4rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p { font-size: 0.78rem; color: var(--muted); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: none; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,15,0.98); padding: 1.5rem; gap: 1.2rem; border-bottom: 1px solid var(--border); }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .page-header, .contact-layout, .faq-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="IndexHome.html" class="nav-logo">A.M</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="IndexAbout.html" data-i18n="nav.about">About</a></li>
+      <li><a href="IndexProject.html" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="IndexContact.html" class="active" data-i18n="nav.contact">Contact</a></li>
+      <li><a href="CV-Agus-Miftachul-Huda.pdf" target="_blank" class="btn btn-outline" style="padding:0.5rem 1.2rem;font-size:0.75rem;" data-i18n="nav.cv">Download CV</a></li>
+    </ul>
+    <div class="nav-controls">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
+        <button class="lang-btn" data-lang="id" onclick="switchLang('id')">ID</button>
+        <button class="lang-btn" data-lang="zh" onclick="switchLang('zh')">中文</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme"></button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" style="margin-left:4px">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-tag" data-i18n="c.hero.tag">Say Hello</div>
+    <h1 class="page-title" data-i18n="c.hero.title">Get In Touch</h1>
+    <p class="page-subtitle" data-i18n="c.hero.sub">
+      Whether you have a project in mind, want to collaborate, or simply want to connect —
+      I'd love to hear from you.
+    </p>
+  </header>
+
+  <!-- MAIN LAYOUT -->
+  <section class="contact-layout">
+
+    <!-- LEFT: Info -->
+    <div class="contact-info">
+
+      <div class="info-block">
+        <div class="info-label" data-i18n="c.s.lbl">Current Status</div>
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span data-i18n="c.s.txt">Open to new opportunities</span>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-label" data-i18n="c.r.lbl">About Reaching Out</div>
+        <p data-i18n="c.r.txt">
+          I'm always open to discussing <strong>new projects, creative ideas,
+          or collaboration opportunities</strong>. Whether it's a web app, mobile project,
+          or backend API — don't hesitate, just say hello.
+        </p>
+      </div>
+
+      <div class="info-block">
+        <div class="info-label" data-i18n="c.ch.lbl">Contact Channels</div>
+        <div class="channel-cards">
+
+          <a href="mailto:agus.miftachul@gmail.com" class="channel-card">
+            <div class="channel-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+            </div>
+            <div class="channel-info">
+              <div class="channel-type" data-i18n="c.email.t">Email</div>
+              <div class="channel-value">agus.miftachul@gmail.com</div>
+            </div>
+            <svg class="channel-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+          <a href="https://github.com/Miftchul" target="_blank" class="channel-card">
+            <div class="channel-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+            </div>
+            <div class="channel-info">
+              <div class="channel-type" data-i18n="c.gh.t">GitHub</div>
+              <div class="channel-value">github.com/Miftchul</div>
+            </div>
+            <svg class="channel-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+          <a href="https://linkedin.com/in/miftachulhuda" target="_blank" class="channel-card">
+            <div class="channel-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </div>
+            <div class="channel-info">
+              <div class="channel-type" data-i18n="c.li.t">LinkedIn</div>
+              <div class="channel-value">Agus Miftachul Huda</div>
+            </div>
+            <svg class="channel-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+          <a href="CV-Agus-Miftachul-Huda.pdf" target="_blank" class="channel-card">
+            <div class="channel-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            </div>
+            <div class="channel-info">
+              <div class="channel-type">Resume / CV</div>
+              <div class="channel-value">Download PDF</div>
+            </div>
+            <svg class="channel-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-label" data-i18n="c.resp.lbl">Response Time</div>
+        <p data-i18n="c.resp.txt">I typically respond within <strong>24–48 hours</strong> on weekdays. For urgent matters, email is the fastest way to reach me.</p>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div class="contact-form-wrap">
+      <div class="form-card">
+
+        <div id="formBody">
+          <h2 class="form-title" data-i18n="c.f.title">Send a Message</h2>
+          <p class="form-subtitle" data-i18n="c.f.sub">Fill out the form and I'll get back to you as soon as possible.</p>
+
+          <div class="form-row">
+            <div class="field">
+              <label data-i18n="c.f.fn">First Name <span>*</span></label>
+              <input type="text" id="firstName" placeholder="John" />
+            </div>
+            <div class="field">
+              <label data-i18n="c.f.ln">Last Name <span>*</span></label>
+              <input type="text" id="lastName" placeholder="Doe" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label data-i18n="c.f.email">Email Address <span>*</span></label>
+            <input type="email" id="email" placeholder="john@example.com" />
+          </div>
+
+          <div class="field">
+            <label data-i18n="c.f.subj">Subject <span>*</span></label>
+            <select id="subject">
+              <option value="" disabled selected>Select a topic…</option>
+              <option value="project">Project Collaboration</option>
+              <option value="job">Job Opportunity</option>
+              <option value="freelance">Freelance Work</option>
+              <option value="question">Technical Question</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label data-i18n="c.f.msg">Message <span>*</span></label>
+            <textarea id="message" placeholder="Tell me about your project or idea…"></textarea>
+          </div>
+
+          <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+            <span data-i18n="c.f.submit">Send Message</span>
+          </button>
+        </div>
+
+        <div class="success-msg" id="successMsg">
+          <div class="success-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3 data-i18n="c.f.ok.title">Message Sent!</h3>
+          <p data-i18n="c.f.ok.txt">Thank you for reaching out. I'll get back to you within 24–48 hours.</p>
+          <button class="reset-btn" onclick="resetForm()" data-i18n="c.f.ok.reset">Send Another Message</button>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="section-header reveal">
+      <span class="section-tag" data-i18n="c.faq.tag">FAQ</span>
+      <h2 class="section-title" data-i18n="c.faq.title">Common Questions</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="c.q1">Are you available for freelance or contract work?</span>
+          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 1v8M1 5h8"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="c.a1">Yes — I'm open to freelance, contract, and full-time opportunities. Whether it's a web app, mobile project, or backend API, feel free to send me the details via the contact form or directly by email.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="c.q2">What technologies do you work with?</span>
+          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 1v8M1 5h8"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="c.a2">My stack includes Python, TypeScript, React Native, JavaScript, REST APIs, Java, C#, SQL, Docker, Dart, Flutter, WordPress, PHP, and Laravel.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="c.q3">Can you build both web and mobile applications?</span>
+          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 1v8M1 5h8"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="c.a3">Absolutely. I work across the full stack — from web platforms (Laravel, TypeScript, JavaScript) to cross-platform mobile apps (Flutter/Dart and React Native).</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="c.q4">How long does it take to get a response?</span>
+          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 1v8M1 5h8"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="c.a4">I typically reply within 24–48 hours on weekdays. For urgent matters, email is the quickest channel.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="c.q5">Do you work on WordPress projects?</span>
+          <span class="faq-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 1v8M1 5h8"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="c.a5">Yes — WordPress is part of my stack. I can build custom themes, plugins, and content-driven websites. I'm also comfortable setting up and optimizing WooCommerce stores.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p data-i18n="footer.copy">© 2026 Agus Miftachul Huda. All rights reserved.</p>
+    <p data-i18n="footer.built">Built with passion &amp; precision.</p>
+  </footer>
+
+  <script src="portfolio.js"></script>
+  <script>
+    const reveals = document.querySelectorAll('.reveal, .info-block, .contact-form-wrap');
+    const rObs = new IntersectionObserver(entries => {
+      entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*100); rObs.unobserve(e.target);} });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => rObs.observe(el));
+
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight='0'; });
+      if (!isOpen) { item.classList.add('open'); answer.style.maxHeight = answer.scrollHeight+'px'; }
+    }
+
+    function handleSubmit() {
+      const fields = ['firstName','lastName','email','subject','message'];
+      let valid = true;
+      fields.forEach(id => { const el=document.getElementById(id); if(!el.value.trim()){el.style.borderColor='var(--error)';valid=false;}else{el.style.borderColor='';} });
+      if (!valid) return;
+      const btn = document.getElementById('submitBtn');
+      btn.classList.add('loading');
+      btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 0.8s linear infinite"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" opacity="0.3"/><path d="M21 12a9 9 0 00-9-9"/></svg> Sending…`;
+      setTimeout(() => { document.getElementById('formBody').style.display='none'; document.getElementById('successMsg').classList.add('show'); }, 1400);
+    }
+
+    function resetForm() {
+      document.getElementById('formBody').style.display='block';
+      document.getElementById('successMsg').classList.remove('show');
+      ['firstName','lastName','email','subject','message'].forEach(id=>{const el=document.getElementById(id);el.value='';el.style.borderColor='';});
+      const btn=document.getElementById('submitBtn');
+      btn.classList.remove('loading');
+      btn.innerHTML=`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg> <span data-i18n="c.f.submit">Send Message</span>`;
+    }
+  </script>
+
+</body>
+</html>
